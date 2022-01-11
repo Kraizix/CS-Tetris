@@ -35,9 +35,10 @@
             // 
             // btnPlay
             // 
-            this.btnPlay.Location = new System.Drawing.Point(315, 135);
+            this.btnPlay.Location = new System.Drawing.Point(236, 110);
+            this.btnPlay.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnPlay.Name = "btnPlay";
-            this.btnPlay.Size = new System.Drawing.Size(183, 43);
+            this.btnPlay.Size = new System.Drawing.Size(137, 35);
             this.btnPlay.TabIndex = 0;
             this.btnPlay.Text = "Play";
             this.btnPlay.UseVisualStyleBackColor = true;
@@ -45,9 +46,10 @@
             // 
             // btnOption
             // 
-            this.btnOption.Location = new System.Drawing.Point(315, 208);
+            this.btnOption.Location = new System.Drawing.Point(236, 169);
+            this.btnOption.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnOption.Name = "btnOption";
-            this.btnOption.Size = new System.Drawing.Size(183, 43);
+            this.btnOption.Size = new System.Drawing.Size(137, 35);
             this.btnOption.TabIndex = 1;
             this.btnOption.Text = "Option";
             this.btnOption.UseVisualStyleBackColor = true;
@@ -55,9 +57,10 @@
             // 
             // btnQuit
             // 
-            this.btnQuit.Location = new System.Drawing.Point(315, 278);
+            this.btnQuit.Location = new System.Drawing.Point(236, 226);
+            this.btnQuit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnQuit.Name = "btnQuit";
-            this.btnQuit.Size = new System.Drawing.Size(183, 43);
+            this.btnQuit.Size = new System.Drawing.Size(137, 35);
             this.btnQuit.TabIndex = 2;
             this.btnQuit.Text = "Quit";
             this.btnQuit.UseVisualStyleBackColor = true;
@@ -65,12 +68,13 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(600, 366);
             this.Controls.Add(this.btnQuit);
             this.Controls.Add(this.btnOption);
             this.Controls.Add(this.btnPlay);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);

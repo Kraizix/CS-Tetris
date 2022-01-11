@@ -1,0 +1,17 @@
+D:\Developement\tetrics\CS-Tetris\TETRIS\TETRIS\bin\Debug\TETRIS.exe.config
+D:\Developement\tetrics\CS-Tetris\TETRIS\TETRIS\bin\Debug\TETRIS.exe
+D:\Developement\tetrics\CS-Tetris\TETRIS\TETRIS\bin\Debug\TETRIS.pdb
+D:\Developement\tetrics\CS-Tetris\TETRIS\TETRIS\obj\Debug\TETRIS.csproj.AssemblyReference.cache
+D:\Developement\tetrics\CS-Tetris\TETRIS\TETRIS\obj\Debug\TETRIS.csproj.SuggestedBindingRedirects.cache
+D:\Developement\tetrics\CS-Tetris\TETRIS\TETRIS\obj\Debug\Interop.WMPLib.dll
+D:\Developement\tetrics\CS-Tetris\TETRIS\TETRIS\obj\Debug\TETRIS.csproj.ResolveComReference.cache
+D:\Developement\tetrics\CS-Tetris\TETRIS\TETRIS\obj\Debug\TETRIS.Form1.resources
+D:\Developement\tetrics\CS-Tetris\TETRIS\TETRIS\obj\Debug\TETRIS.Options.resources
+D:\Developement\tetrics\CS-Tetris\TETRIS\TETRIS\obj\Debug\TETRIS.Properties.Resources.resources
+D:\Developement\tetrics\CS-Tetris\TETRIS\TETRIS\obj\Debug\TETRIS.csproj.GenerateResource.cache
+D:\Developement\tetrics\CS-Tetris\TETRIS\TETRIS\obj\Debug\TETRIS.csproj.CoreCompileInputs.cache
+D:\Developement\tetrics\CS-Tetris\TETRIS\TETRIS\obj\Debug\TETRIS.exe
+D:\Developement\tetrics\CS-Tetris\TETRIS\TETRIS\obj\Debug\TETRIS.pdb
+D:\Developement\tetrics\CS-Tetris\TETRIS\TETRIS\bin\Debug\Interop.WMPLib.dll
+D:\Developement\tetrics\CS-Tetris\TETRIS\TETRIS\bin\Debug\AxInterop.WMPLib.dll
+D:\Developement\tetrics\CS-Tetris\TETRIS\TETRIS\obj\Debug\AxInterop.WMPLib.dll
