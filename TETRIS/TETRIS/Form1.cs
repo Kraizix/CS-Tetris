@@ -16,5 +16,20 @@ namespace TETRIS
         {
             InitializeComponent();
         }
+
+        private void btnQuit_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void btnOption_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPlay_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
