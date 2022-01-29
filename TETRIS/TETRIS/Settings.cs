@@ -12,7 +12,7 @@ namespace TETRIS
 {
     public partial class Options : Form
     {
-        WMPLib.WindowsMediaPlayer axMusicPlayer = Form1.GetMediaPlayer();
+        WMPLib.WindowsMediaPlayer axMusicPlayer = Home.GetMediaPlayer();
         public Options()
         {
             InitializeComponent();

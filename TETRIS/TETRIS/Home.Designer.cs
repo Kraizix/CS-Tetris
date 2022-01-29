@@ -1,6 +1,6 @@
 ﻿namespace TETRIS
 {
-    partial class Form1
+    partial class Home
     {
         /// <summary>
         /// Variable nécessaire au concepteur.
@@ -77,6 +77,7 @@
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.ResumeLayout(false);
 
         }

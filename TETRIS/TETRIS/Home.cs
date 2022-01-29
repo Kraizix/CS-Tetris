@@ -14,10 +14,10 @@ using System.IO;
 
 namespace TETRIS
 {
-    public partial class Form1 : Form
+    public partial class Home : Form
     {
         private static WMPLib.WindowsMediaPlayer axMusicPlayer = new WMPLib.WindowsMediaPlayer();
-        public Form1()
+        public Home()
         {
             InitializeComponent();
             axMusicPlayer.URL = @"D:\Developement\tetrics\CS-Tetris\TETRIS\TETRIS\theme_menu.wav";
@@ -43,12 +43,20 @@ namespace TETRIS
 
         private void btnPlay_Click(object sender, EventArgs e)
         {
-
+            Play play = new Play();
+            Hide();
+            play.ShowDialog();
+            Close();
         }
 
         public static WindowsMediaPlayer GetMediaPlayer()
         {
             return axMusicPlayer;
+        }
+        private void Form1_FormClosing(Object sender, FormClosingEventArgs e)
+        {
+            Console.WriteLine("closing");
+            Application.Exit();
         }
     }
 }
