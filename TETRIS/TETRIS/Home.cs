@@ -1,16 +1,7 @@
 ﻿using System;
-using WMPLib;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Media;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Reflection;
 using System.IO;
+using System.Windows.Forms;
+using WMPLib;
 
 namespace TETRIS
 {
@@ -35,7 +26,9 @@ namespace TETRIS
             Options f3 = new Options(); // Instantiate a Form3 object.
             f3.Show(); // Show Form3 and
             axMusicPlayer.controls.stop();
-            axMusicPlayer.URL = @"D:\Developement\tetrics\CS-Tetris\TETRIS\TETRIS\theme_option.wav";
+            string path = Directory.GetCurrentDirectory();
+            Console.WriteLine(path);
+            axMusicPlayer.URL = @"C:\Users\kevin\source\repos\CS-Tetris\TETRIS\TETRIS\theme_option.wav";
             axMusicPlayer.settings.setMode("loop", true);
             axMusicPlayer.controls.play();
 
@@ -44,9 +37,8 @@ namespace TETRIS
         private void btnPlay_Click(object sender, EventArgs e)
         {
             Play play = new Play();
-            Hide();
             play.ShowDialog();
-            Close();
+            Hide();
         }
 
         public static WindowsMediaPlayer GetMediaPlayer()

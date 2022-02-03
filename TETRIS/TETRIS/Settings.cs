@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TETRIS
@@ -21,7 +14,7 @@ namespace TETRIS
         private void Options_Load(object sender, EventArgs e)
         {
             label2.Text = axMusicPlayer.settings.volume.ToString();
-            volumeBar.Value = axMusicPlayer.settings.volume/10;
+            volumeBar.Value = axMusicPlayer.settings.volume / 10;
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
