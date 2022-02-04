@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.IO;
 using System.Timers;
 using System.Windows.Forms;
 
@@ -7,8 +8,10 @@ namespace TETRIS
 {
     public partial class Play : Form
     {
+        WMPLib.WindowsMediaPlayer gameMusic = Home.GetMediaPlayer();
 
         private int h, m, s;
+        private int speed = Options.GetSpeed();
         private Bitmap canvasBitmap;
         private Graphics canvasGraphics;
         private int size = 20;
@@ -46,6 +49,12 @@ namespace TETRIS
             t.Interval = 1000;
             t.Elapsed += OnTimeEvent;
             t.Start();
+            gameMusic.controls.stop();
+            string path = Directory.GetCurrentDirectory();
+            Console.WriteLine(path);
+            gameMusic.URL = @"D:\Developement\tetrics\CS-Tetris\TETRIS\TETRIS\game_theme.wav";
+            gameMusic.settings.setMode("loop", true);
+            gameMusic.controls.play();
         }
         private void OnTimeEvent(object sender, ElapsedEventArgs e)
         {
@@ -97,7 +106,7 @@ namespace TETRIS
             updateNextShape();
 
             timer.Tick += Timer_Tick;
-            timer.Interval = 500;
+            timer.Interval = 500-speed*4;
             timer.Start();
 
         }
@@ -144,6 +153,7 @@ namespace TETRIS
             }
             pictureBox1.Image = canvasBitmap;
         }
+
         private void updateNextShape()
         {
             nextBitmap = new Bitmap(pictureBox2.Width, pictureBox2.Height);
@@ -184,11 +194,21 @@ namespace TETRIS
                 }
                 label3.Text = "Score: " + game.score.ToString();
                 label4.Text = "Level: " + game.score / 1000;
-                timer.Interval = 500 - 20*(game.score / 1000);
+                timer.Interval = 500 - speed * 4 - 20*(game.score / 1000);
                 game.currentShape = game.nextShape;
                 game.nextShape = game.getNewShape();
                 updateNextShape();
             }
+        }
+
+        public int GetSpeed()
+        {
+            return speed;
+        }
+
+        public void SetSpeed(int value)
+        {
+            speed = value;
         }
     }
 }

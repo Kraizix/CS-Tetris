@@ -5,7 +5,8 @@ namespace TETRIS
 {
     public partial class Options : Form
     {
-        WMPLib.WindowsMediaPlayer axMusicPlayer = Home.GetMediaPlayer();
+        private WMPLib.WindowsMediaPlayer axMusicPlayer = Home.GetMediaPlayer();
+        private static int gameSpeed = 20;
         public Options()
         {
             InitializeComponent();
@@ -15,6 +16,7 @@ namespace TETRIS
         {
             label2.Text = axMusicPlayer.settings.volume.ToString();
             volumeBar.Value = axMusicPlayer.settings.volume / 10;
+            comboBox1.SelectedIndex = 0;
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -67,9 +69,36 @@ namespace TETRIS
             }
         }
 
+        public static int GetSpeed()
+        {
+            return gameSpeed;
+        }
+
+        public static void SetSpeed(int value)
+        {
+            gameSpeed = value;
+        }
+
         private void label3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedIndex == 0)
+            {
+                gameSpeed = 0;
+            } else if (comboBox1.SelectedIndex == 1)
+            {
+                gameSpeed = 10;
+            } else if (comboBox1.SelectedIndex == 2)
+            {
+                gameSpeed = 50;
+            } else
+            {
+                gameSpeed = 100;
+            }
         }
     }
 }

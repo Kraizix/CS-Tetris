@@ -28,7 +28,7 @@ namespace TETRIS
             axMusicPlayer.controls.stop();
             string path = Directory.GetCurrentDirectory();
             Console.WriteLine(path);
-            axMusicPlayer.URL = @"C:\Users\kevin\source\repos\CS-Tetris\TETRIS\TETRIS\theme_option.wav";
+            axMusicPlayer.URL = @"D:\Developement\tetrics\CS-Tetris\TETRIS\TETRIS\theme_option.wav";
             axMusicPlayer.settings.setMode("loop", true);
             axMusicPlayer.controls.play();
 
@@ -49,6 +49,22 @@ namespace TETRIS
         {
             Console.WriteLine("closing");
             Application.Exit();
+        }
+
+        private void Home_Load(object sender, EventArgs e)
+        {
+            pictureBox1.ImageLocation = "https://i.imgur.com/DHAJmLB.png";
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
