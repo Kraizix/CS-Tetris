@@ -23,6 +23,10 @@ namespace TETRIS
         private System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
         private System.Timers.Timer t;
         private string[] colors = { "#ffffff","#ffff00", "#00ffff", "#800080", "#ff7f00", "#0000ff", "#ff0000", "#00ff00" };
+        private bool cleared = false;
+        private bool clearMode = Options.getMode();
+        private int clearScore = Options.getClearScore();
+        private int lastClear = 0;
 
         private void loadCanvas()
         {
@@ -190,11 +194,17 @@ namespace TETRIS
                 bool update = game.clearRows();
                 if (update)
                 {
+                    
                     updateGrid();
                 }
                 label3.Text = "Score: " + game.score.ToString();
                 label4.Text = "Level: " + game.score / 1000;
                 timer.Interval = 500 - speed * 4 - 20*(game.score / 1000);
+                if (clearMode && game.score/clearScore>lastClear)
+                {
+                    lastClear = game.score/clearScore;
+                    ClearMode();
+                }
                 game.currentShape = game.nextShape;
                 game.nextShape = game.getNewShape();
                 updateNextShape();
@@ -209,6 +219,18 @@ namespace TETRIS
         public void SetSpeed(int value)
         {
             speed = value;
+        }
+
+        private void ClearMode()
+        {
+            for (int i = 0; i < game.width; i++)
+            {
+                for (int j = 0; j < game.height; j++)
+                {
+                    game.grid[i,j] = 0;
+                }
+            }
+            updateGrid();
         }
     }
 }

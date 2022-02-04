@@ -7,6 +7,8 @@ namespace TETRIS
     {
         private WMPLib.WindowsMediaPlayer axMusicPlayer = Home.GetMediaPlayer();
         private static int gameSpeed = 20;
+        private static bool clearMode = false;
+        private static int clearScore = 0;
         public Options()
         {
             InitializeComponent();
@@ -99,6 +101,47 @@ namespace TETRIS
             {
                 gameSpeed = 100;
             }
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                comboBox2.Show();
+                clearMode = true;
+            } else
+            {
+                comboBox2.Hide();
+                clearMode = false;
+            }
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(comboBox2.SelectedIndex == 0)
+            {
+                clearScore = 1000;
+            } else if (comboBox2.SelectedIndex == 1)
+            {
+                clearScore = 2000;
+            } else if (comboBox2.SelectedIndex == 2)
+            {
+                clearScore = 3000;
+            } else if (comboBox2.SelectedIndex == 3)
+            {
+                clearScore = 4000;
+            } else if (comboBox2.SelectedIndex == 4)
+            {
+                clearScore = 5000;
+            }
+        }
+        public static bool getMode()
+        {
+            return clearMode;
+        }
+        public static int getClearScore()
+        {
+            return clearScore;
         }
     }
 }
