@@ -62,25 +62,32 @@ namespace TETRIS
         }
         private void OnTimeEvent(object sender, ElapsedEventArgs e)
         {
-            Invoke(new Action(() =>
+            try
             {
-                s += 1;
-                if (s == 60)
+                Invoke(new Action(() =>
                 {
-                    s = 0;
-                    m += 1;
-                }
-                if (m == 60)
-                {
-                    m = 0;
-                    h += 1;
-                }
-                txtResult.Text = string.Format("{0}:{1}:{2}", h.ToString().PadLeft(2, '0'), m.ToString().PadLeft(2, '0'), s.ToString().PadLeft(2, '0'));
-            }));
+                    s += 1;
+                    if (s == 60)
+                    {
+                        s = 0;
+                        m += 1;
+                    }
+                    if (m == 60)
+                    {
+                        m = 0;
+                        h += 1;
+                    }
+                    txtResult.Text = string.Format("{0}:{1}:{2}", h.ToString().PadLeft(2, '0'), m.ToString().PadLeft(2, '0'), s.ToString().PadLeft(2, '0'));
+                }));
+            } catch
+            {
+                return;
+            }
         }
         private void Play_FormClosing(Object sender, FormClosingEventArgs e)
         {
             t.Stop();
+            timer.Stop();
             Application.Exit();
         }
         private void drawShape()
@@ -183,18 +190,18 @@ namespace TETRIS
             drawShape();
             if (!isMoveSuccess)
             {
-                game.checkIfGameOver();
-                if (game.ended)
+                bool ended = game.updateArray();
+                if (ended)
                 {
+                    timer.Stop();
+                    t.Stop();
                     Application.Exit();
                     return;
                 }
-                game.updateArray();
                 canvasBitmap = new Bitmap(workingBitmap);
                 bool update = game.clearRows();
                 if (update)
                 {
-                    
                     updateGrid();
                 }
                 label3.Text = "Score: " + game.score.ToString();

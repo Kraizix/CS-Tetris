@@ -54,7 +54,7 @@
             return true;
         }
 
-        public void updateArray()
+        public bool updateArray()
         {
             for (int i = 0; i < currentShape.Width; i++)
             {
@@ -62,18 +62,15 @@
                 {
                     if (currentShape.Piece[j, i] != 0)
                     {
-                            grid[currentX + i, currentY + j] = currentShape.Piece[j,i];
+                        if(currentX + i <0 || currentX + i > width || currentY + j < 0 || currentY + j > height)
+                        {
+                            return true;
+                        }
+                        grid[currentX + i, currentY + j] = currentShape.Piece[j,i];
                     }
                 }
             }
-        }
-        public void checkIfGameOver()
-        {
-            if (currentY <= 0)
-            {
-                ended = true;
-            }
-            ended = false;
+            return false;
         }
         public void rotate()
         {

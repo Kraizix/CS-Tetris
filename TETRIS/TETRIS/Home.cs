@@ -56,15 +56,5 @@ namespace TETRIS
             pictureBox1.ImageLocation = "https://i.imgur.com/DHAJmLB.png";
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
         }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

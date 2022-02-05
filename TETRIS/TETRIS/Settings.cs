@@ -21,16 +21,6 @@ namespace TETRIS
             comboBox1.SelectedIndex = 0;
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
             axMusicPlayer.settings.volume = volumeBar.Value * 10;
@@ -41,22 +31,12 @@ namespace TETRIS
             }
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             axMusicPlayer.URL = @"D:\Developement\tetrics\CS-Tetris\TETRIS\TETRIS\theme_menu.wav";
             axMusicPlayer.settings.setMode("loop", true);
             axMusicPlayer.controls.play();
             this.Close();
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void submitPass_Click(object sender, EventArgs e)
@@ -79,11 +59,6 @@ namespace TETRIS
         public static void SetSpeed(int value)
         {
             gameSpeed = value;
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
