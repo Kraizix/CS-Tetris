@@ -20,6 +20,7 @@ namespace TETRIS
             label2.Text = axMusicPlayer.settings.volume.ToString();
             volumeBar.Value = axMusicPlayer.settings.volume / 10;
             comboBox1.SelectedIndex = 0;
+            comboBox2.SelectedIndex = 0;
         }
 
         private void trackBar1_Scroll(object sender, EventArgs e)
