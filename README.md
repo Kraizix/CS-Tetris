@@ -1,7 +1,6 @@
 # PROJET TETRIS C# -- 2022
 
-- Visual Studio 2022
-- .NET 6.0- [PROJET TETRIS C# -- 2022](#projet-tetris-c----2022)
+- [PROJET TETRIS C# -- 2022](#projet-tetris-c----2022)
   - [Présentation du projet](#présentation-du-projet)
   - [Prérequis pour le projet](#prérequis-pour-le-projet)
   - [Installation du Projet](#installation-du-projet)
@@ -13,6 +12,9 @@
 Le projet tetris est un projet dont le but est de recréer un Tetris en C# et avec WindowsForms. Il intervient en fin de piscine c# dans le but d'utiliser nos connaissances en c# acquises plus tôt.
 
 ## Prérequis pour le projet
+
+- Visual Studio 2022
+- .NET 6.0
 
 ## Installation du Projet
 
