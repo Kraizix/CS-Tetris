@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using WMPLib;
 
@@ -7,12 +8,18 @@ namespace TETRIS
 {
     public partial class Home : Form
     {
+        public static string AssetsPath = findAssetsPath();
+        private static string findAssetsPath()
+        {
+            string[] folders = Path.GetDirectoryName(Application.ExecutablePath).Split('\\');
+            return String.Join(@"\", folders.Take(folders.Length - 2)) + @"\assets\";
+        }
         private Play play;
         private static WMPLib.WindowsMediaPlayer axMusicPlayer = new WMPLib.WindowsMediaPlayer();
         public Home()
         {
             InitializeComponent();
-            axMusicPlayer.URL = @"D:\Developement\tetrics\CS-Tetris\TETRIS\TETRIS\theme_menu.wav";
+            axMusicPlayer.URL = AssetsPath+ @"\theme_menu.wav";
             axMusicPlayer.settings.setMode("loop", true);
             axMusicPlayer.controls.play();
         }
@@ -25,13 +32,12 @@ namespace TETRIS
         private void btnOption_Click(object sender, EventArgs e)
         {
             Options f3 = new Options(); // Instantiate a Form3 object.
-            f3.Show(); // Show Form3 and
             axMusicPlayer.controls.stop();
-            string path = Directory.GetCurrentDirectory();
-            Console.WriteLine(path);
-            axMusicPlayer.URL = @"D:\Developement\tetrics\CS-Tetris\TETRIS\TETRIS\theme_option.wav";
+            axMusicPlayer.URL = AssetsPath + @"\theme_option.wav";
             axMusicPlayer.settings.setMode("loop", true);
             axMusicPlayer.controls.play();
+            f3.ShowDialog(); // Show Form3 and
+            
 
         }
 

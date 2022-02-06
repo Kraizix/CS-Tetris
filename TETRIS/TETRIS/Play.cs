@@ -141,7 +141,7 @@ namespace TETRIS
                     pause = false;
                     timer.Start();
                     t.Start();
-                    button1.Text = "Pause";
+                    label5.Text = "Playing";
                 }
                 return;
             }
@@ -168,7 +168,7 @@ namespace TETRIS
                     timer.Stop();
                     t.Stop();
                     pause = true;
-                    button1.Text = "Continue";
+                    label5.Text = "Paused";
                     break;
                 default:
                     return;
@@ -274,24 +274,6 @@ namespace TETRIS
         public int GetScore()
         {
             return game.score;
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if(!pause)
-            {
-                pause = true;
-                timer.Stop();
-                t.Stop();
-                button1.Text = "Continue";
-            } else
-            {
-                pause = false;
-                timer.Start();
-                t.Start();
-                button1.Text = "Pause";
-            }
-            
         }
 
         public void Reset()

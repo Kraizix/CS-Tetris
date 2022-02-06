@@ -33,7 +33,7 @@ namespace TETRIS
 
         private void button1_Click(object sender, EventArgs e)
         {
-            axMusicPlayer.URL = @"D:\Developement\tetrics\CS-Tetris\TETRIS\TETRIS\theme_menu.wav";
+            axMusicPlayer.URL = Home.AssetsPath + @"\theme_menu.wav";
             axMusicPlayer.settings.setMode("loop", true);
             axMusicPlayer.controls.play();
             this.Close();
@@ -105,7 +105,7 @@ namespace TETRIS
             } else if (comboBox2.SelectedIndex == 3)
             {
                 clearScore = 4000;
-            } else if (comboBox2.SelectedIndex == 4)
+            } else
             {
                 clearScore = 5000;
             }
