@@ -164,6 +164,9 @@ namespace TETRIS
                 case Keys.D:
                     Drop();
                     break;
+                case Keys.R:
+                    game.ReverseRotate();
+                    break;
                 case Keys.Escape:
                     timer.Stop();
                     t.Stop();
@@ -174,7 +177,7 @@ namespace TETRIS
                     return;
             }
             bool canMove = game.CanMove(posX, posY);
-            if (!canMove && e.KeyCode == Keys.Up)
+            if (!canMove && (e.KeyCode == Keys.Up || e.KeyCode == Keys.R))
             {
                 game.Rollback();
             }
@@ -275,7 +278,6 @@ namespace TETRIS
         {
             return game.score;
         }
-
         public void Reset()
         {
             game = new Game();

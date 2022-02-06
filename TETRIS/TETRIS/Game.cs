@@ -87,6 +87,22 @@
             currentShape.Width = currentShape.Height;
             currentShape.Height = temp;
         }
+
+        public void ReverseRotate()
+        {
+            backup = currentShape.Piece;
+            currentShape.Piece = new int[currentShape.Width, currentShape.Height];
+            for (int i = 0; i < currentShape.Width; i++)
+            {
+                for (int j = 0; j < currentShape.Height; j++)
+                {
+                    currentShape.Piece[i, j] = backup[j, currentShape.Width-1-i];
+                }
+            }
+            int temp = currentShape.Width;
+            currentShape.Width = currentShape.Height;
+            currentShape.Height = temp;
+        }
         public void Rollback()
         {
             currentShape.Piece = backup;

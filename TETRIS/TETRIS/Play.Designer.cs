@@ -44,7 +44,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Location = new System.Drawing.Point(63, 15);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(277, 492);
             this.pictureBox1.TabIndex = 1;
@@ -55,12 +55,13 @@
             this.label1.AutoSize = true;
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(373, 331);
+            this.label1.Location = new System.Drawing.Point(372, 300);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(186, 77);
+            this.label1.Size = new System.Drawing.Size(186, 152);
             this.label1.TabIndex = 2;
-            this.label1.Text = "🡄🡆 Move Left/Right \n 🡇 Drop \n 🡅 Rotate";
+            this.label1.Text = "🡄🡆 Move Left/Right \r\n 🡇 Drop \r\n 🡅 Rotate (⭮)\r\n R  Rotate(⭯)\r\n D   Drop to Bo" +
+    "ttom\r\nEsc  Pause\r\n";
             // 
             // label2
             // 
@@ -76,9 +77,9 @@
             // pictureBox2
             // 
             this.pictureBox2.Location = new System.Drawing.Point(375, 220);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(133, 96);
+            this.pictureBox2.Size = new System.Drawing.Size(133, 76);
             this.pictureBox2.TabIndex = 4;
             this.pictureBox2.TabStop = false;
             // 
@@ -117,7 +118,7 @@
             this.label5.AutoSize = true;
             this.label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(423, 448);
+            this.label5.Location = new System.Drawing.Point(430, 470);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(78, 27);
             this.label5.TabIndex = 8;
@@ -138,7 +139,7 @@
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Play";
             this.Text = "Play";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Play_FormClosing);
