@@ -37,6 +37,14 @@ Faites Ok et c'est bon !
 
 Il ne vous reste plus qu'à démarrer le projet avec le bouton play ! Bon jeu :)
 
+## Comment jouer au jeu ??
+
+> Besoin d'aide n'est-ce pas ?
+
+Il suffit de cliquer sur le bouton `Aide` dans les Options accessibles depuis le Menu.
+
+![](https://i.imgur.com/JfTPlTK.png)
+
 ## Crédits
 
 Kévin GRANGER -- Valentin DAUTREMENT
