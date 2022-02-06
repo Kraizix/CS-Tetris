@@ -87,7 +87,6 @@
             this.pictureBox1.Size = new System.Drawing.Size(343, 84);
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // label1
             // 
@@ -98,7 +97,6 @@
             this.label1.Size = new System.Drawing.Size(144, 11);
             this.label1.TabIndex = 4;
             this.label1.Text = "By ProgrammaStudios";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // Home
             // 
