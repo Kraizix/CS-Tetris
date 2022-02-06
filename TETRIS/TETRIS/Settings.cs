@@ -9,6 +9,7 @@ namespace TETRIS
         private static int gameSpeed = 20;
         private static bool clearMode = false;
         private static int clearScore = 0;
+        private static bool randomMode = false;
         public Options()
         {
             InitializeComponent();
@@ -46,6 +47,11 @@ namespace TETRIS
                 gameSpeed = 120;
                 textBox1.Text = "Mode Super Speed : Activé";
             }
+            else if (textBox1.Text == "Random")
+            {
+                randomMode = true;
+                textBox1.Text = "Game randomized";
+            } 
             else
             {
                 textBox1.Text = "Aie...";
@@ -60,6 +66,11 @@ namespace TETRIS
         public static void SetSpeed(int value)
         {
             gameSpeed = value;
+        }
+
+        public static bool GetRandom()
+        {
+            return randomMode;
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)

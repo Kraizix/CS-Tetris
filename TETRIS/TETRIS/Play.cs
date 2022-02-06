@@ -25,8 +25,11 @@ namespace TETRIS
         private readonly string[] colors = { "#ffffff","#ffff00", "#00ffff", "#800080", "#ff7f00", "#0000ff", "#ff0000", "#00ff00" };
         private readonly bool clearMode = Options.getMode();
         private readonly int clearScore = Options.getClearScore();
+        private readonly bool randomMode = Options.GetRandom();
+        private System.Windows.Forms.Timer rtimer = new System.Windows.Forms.Timer();
         private int lastClear = 0;
         private bool pause = false;
+        private bool isPlaying = true;
 
         private void LoadCanvas()
         {
@@ -60,6 +63,43 @@ namespace TETRIS
             gameMusic.settings.setMode("loop", true);
             gameMusic.controls.play();
         }
+
+        private void Randomizer(object sender,EventArgs e)
+        {
+            string[] input = { "Rotate", "RRotate", "MoveRight", "MoveLeft", "Drop", "Dropdown" };
+            Random random = new Random();
+            string inp = input[random.Next(input.Length)];
+            int posX = 0;
+            int posY = 0;
+            switch (inp)
+            {
+                case "Rotate":
+                    game.Rotate();
+                    break;
+                case "RRotate":
+                    game.ReverseRotate();
+                    break;
+                case "MoveRight":
+                    posX++;
+                    break;
+                case "MoveLeft":
+                    posX--;
+                    break;
+                case "Drop":
+                    posY--;
+                    break;
+                case "Dropdown":
+                    Drop();
+                    break;
+            }
+            rtimer.Interval = random.Next(500, 5000);
+            bool canMove = game.CanMove(posX, posY);
+            if (!canMove && (inp == "RRotate" || inp == "Rotate"))
+            {
+                game.Rollback();
+            }
+            DrawShape();
+        }
         private void OnTimeEvent(object sender, ElapsedEventArgs e)
         {
             try
@@ -90,6 +130,10 @@ namespace TETRIS
             {
                 time.Stop();
                 timer.Stop();
+                if (randomMode)
+                {
+                    rtimer.Stop();
+                }
                 Hide();
                 mainMenu.Show();
             } catch
@@ -130,6 +174,12 @@ namespace TETRIS
             timer.Tick += Timer_Tick;
             timer.Interval = 500-speed*4;
             timer.Start();
+            if (randomMode)
+            {
+                rtimer.Tick += Randomizer;
+                rtimer.Interval = 300;
+                rtimer.Start();
+            }
 
         }
 
@@ -141,6 +191,10 @@ namespace TETRIS
                     pause = false;
                     timer.Start();
                     time.Start();
+                    if (randomMode)
+                    {
+                        rtimer.Start();
+                    }
                     label5.Text = "Playing";
                 }
                 return;
@@ -167,9 +221,27 @@ namespace TETRIS
                 case Keys.R:
                     game.ReverseRotate();
                     break;
+                case Keys.M:
+                    if (isPlaying)
+                    {
+                        gameMusic.controls.pause();
+                        isPlaying = false;
+                        label6.Text = "🔇";
+                    } else
+                    {
+                        gameMusic.controls.play();
+                        isPlaying = true;
+                        label6.Text = "🔈";
+                    }
+                   
+                    break;
                 case Keys.Escape:
                     timer.Stop();
                     time.Stop();
+                    if (randomMode)
+                    {
+                        rtimer.Stop();
+                    }
                     pause = true;
                     label5.Text = "Paused";
                     break;
@@ -228,6 +300,10 @@ namespace TETRIS
                 {
                     timer.Stop();
                     time.Stop();
+                    if (randomMode)
+                    {
+                        rtimer.Stop();
+                    }
                     End end = new End(this);
                     end.ShowDialog();
                     return;
@@ -278,6 +354,7 @@ namespace TETRIS
         {
             return game.score;
         }
+
         public void Reset()
         {
             game = new Game();
