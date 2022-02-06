@@ -56,7 +56,7 @@ namespace TETRIS
             gameMusic.controls.stop();
             string path = Directory.GetCurrentDirectory();
             Console.WriteLine(path);
-            gameMusic.URL = @"D:\Developement\tetrics\CS-Tetris\TETRIS\TETRIS\game_theme.wav";
+            gameMusic.URL = Home.AssetsPath + @"\game_theme.wav";
             gameMusic.settings.setMode("loop", true);
             gameMusic.controls.play();
         }

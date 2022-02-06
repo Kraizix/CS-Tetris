@@ -12,6 +12,7 @@ namespace TETRIS
 {
     public partial class End : Form
     {
+        private WMPLib.WindowsMediaPlayer axMusicPlayer = Home.GetMediaPlayer();
         private Play playForm;
         public End(Play play)
         {
@@ -33,8 +34,17 @@ namespace TETRIS
 
         private void button2_Click(object sender, EventArgs e)
         {
+            axMusicPlayer.URL = Home.AssetsPath + @"\theme_menu.wav";
+            axMusicPlayer.settings.setMode("loop", true);
+            axMusicPlayer.controls.play();
+            this.Close();
             playForm.Close();
             Close();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

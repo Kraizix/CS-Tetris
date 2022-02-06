@@ -41,9 +41,10 @@ namespace TETRIS
 
         private void submitPass_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text == "password" & volumeBar.Value == 2)
+            if (textBox1.Text == "Speed")
             {
-                textBox1.Text = "WOHOOOOO !";
+                gameSpeed = 120;
+                textBox1.Text = "Mode Super Speed : Activé";
             }
             else
             {
@@ -117,6 +118,12 @@ namespace TETRIS
         public static int getClearScore()
         {
             return clearScore;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Help help = new Help();
+            help.ShowDialog();
         }
     }
 }
