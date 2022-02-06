@@ -21,6 +21,7 @@ Cloner le repository sur votre ordinateur :
 `git clone https://github.com/Kraizix/CS-Tetris.git`
 
 Puis démarrez Visual Studio 2022 (*Pas Visual Studio Code !*) sur ce projet.
+Il faut aller chercher le fichier TETRIS.sln avec Visual Studio pour avoir le projet dans Visual
 
 Lorsque vous avez ajouter le projet, il va falloir ajouter WindowsMediaPlayer.
 
