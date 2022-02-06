@@ -19,12 +19,16 @@
             currentShape = GetNewShape();
             System.Threading.Thread.Sleep(100);
             nextShape = GetNewShape();
+            if (currentShape.Color == "#ffff00")
+            {
+                currentX = 4;
+            }
         }
 
         public Shape GetNewShape()
         {
             Shape shape = Shapes.GetRandomShape();
-            currentX = 4;
+            currentX = 3;
             currentY = -1;
 
             return shape;

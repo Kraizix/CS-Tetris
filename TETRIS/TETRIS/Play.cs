@@ -324,6 +324,10 @@ namespace TETRIS
                 }
                 game.currentShape = game.nextShape;
                 game.nextShape = game.GetNewShape();
+                if (game.currentShape.Color == "#ffff00")
+                {
+                    game.currentX = 4;
+                }
                 UpdateNextShape();
             }
         }
