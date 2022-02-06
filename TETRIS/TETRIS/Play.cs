@@ -9,12 +9,12 @@ namespace TETRIS
     public partial class Play : Form
     {
         WMPLib.WindowsMediaPlayer gameMusic = Home.GetMediaPlayer();
-
+        private Home mainMenu;
         private int h, m, s;
         private int speed = Options.GetSpeed();
         private Bitmap canvasBitmap;
         private Graphics canvasGraphics;
-        private int size = 20;
+        private readonly int size = 20;
         private Game game;
         private Bitmap workingBitmap;
         private Graphics workingGraphics;
@@ -22,13 +22,12 @@ namespace TETRIS
         private Graphics nextGraphics;
         private System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
         private System.Timers.Timer t;
-        private string[] colors = { "#ffffff","#ffff00", "#00ffff", "#800080", "#ff7f00", "#0000ff", "#ff0000", "#00ff00" };
-        private bool cleared = false;
-        private bool clearMode = Options.getMode();
-        private int clearScore = Options.getClearScore();
+        private readonly string[] colors = { "#ffffff","#ffff00", "#00ffff", "#800080", "#ff7f00", "#0000ff", "#ff0000", "#00ff00" };
+        private readonly bool clearMode = Options.getMode();
+        private readonly int clearScore = Options.getClearScore();
         private int lastClear = 0;
 
-        private void loadCanvas()
+        private void LoadCanvas()
         {
             pictureBox1.Width = size * game.width;
             pictureBox1.Height = game.height * size;
@@ -86,11 +85,21 @@ namespace TETRIS
         }
         private void Play_FormClosing(Object sender, FormClosingEventArgs e)
         {
-            t.Stop();
-            timer.Stop();
-            Application.Exit();
+            try
+            {
+                t.Stop();
+                timer.Stop();
+                Hide();
+                mainMenu.Show();
+            } catch
+            {
+                return;
+            }
+            
+            
+
         }
-        private void drawShape()
+        private void DrawShape()
         {
             workingBitmap = new Bitmap(canvasBitmap);
             workingGraphics = Graphics.FromImage(workingBitmap);
@@ -109,12 +118,13 @@ namespace TETRIS
 
             pictureBox1.Image = workingBitmap;
         }
-        public Play()
+        public Play(Home home)
         {
+            mainMenu = home;
             InitializeComponent();
             game = new Game();
-            loadCanvas();
-            updateNextShape();
+            LoadCanvas();
+            UpdateNextShape();
 
             timer.Tick += Timer_Tick;
             timer.Interval = 500-speed*4;
@@ -138,19 +148,22 @@ namespace TETRIS
                     posY++;
                     break;
                 case Keys.Up:
-                    game.rotate();
+                    game.Rotate();
+                    break;
+                case Keys.D:
+                    Drop();
                     break;
                 default:
                     return;
             }
-            bool canMove = game.canMove(posX, posY);
+            bool canMove = game.CanMove(posX, posY);
             if (!canMove && e.KeyCode == Keys.Up)
             {
-                game.rollback();
+                game.Rollback();
             }
-            drawShape();
+            DrawShape();
         }
-        private void updateGrid()
+        private void UpdateGrid()
         {
             for(int i = 0; i < game.width; i++)
             {
@@ -165,7 +178,7 @@ namespace TETRIS
             pictureBox1.Image = canvasBitmap;
         }
 
-        private void updateNextShape()
+        private void UpdateNextShape()
         {
             nextBitmap = new Bitmap(pictureBox2.Width, pictureBox2.Height);
             nextGraphics = Graphics.FromImage(nextBitmap);
@@ -186,23 +199,24 @@ namespace TETRIS
         }
         private void Timer_Tick(object sender, EventArgs e)
         {
-            bool isMoveSuccess = game.canMove(0, 1);
-            drawShape();
+            bool isMoveSuccess = game.CanMove(0, 1);
+            DrawShape();
             if (!isMoveSuccess)
             {
-                bool ended = game.updateArray();
+                bool ended = game.UpdateArray();
                 if (ended)
                 {
                     timer.Stop();
                     t.Stop();
-                    Application.Exit();
+                    End end = new End(this);
+                    end.ShowDialog();
                     return;
                 }
                 canvasBitmap = new Bitmap(workingBitmap);
-                bool update = game.clearRows();
+                bool update = game.ClearRows();
                 if (update)
                 {
-                    updateGrid();
+                    UpdateGrid();
                 }
                 label3.Text = "Score: " + game.score.ToString();
                 label4.Text = "Level: " + game.score / 1000;
@@ -213,8 +227,8 @@ namespace TETRIS
                     ClearMode();
                 }
                 game.currentShape = game.nextShape;
-                game.nextShape = game.getNewShape();
-                updateNextShape();
+                game.nextShape = game.GetNewShape();
+                UpdateNextShape();
             }
         }
 
@@ -237,7 +251,40 @@ namespace TETRIS
                     game.grid[i,j] = 0;
                 }
             }
-            updateGrid();
+            UpdateGrid();
+        }
+
+        public int GetScore()
+        {
+            return game.score;
+        }
+
+        public void Reset()
+        {
+            game = new Game();
+            LoadCanvas();
+            UpdateNextShape();
+            game.score = 0;
+            timer.Tick += Timer_Tick;
+            timer.Interval = 500 - speed * 4;
+            h = 0;
+            m = 0;
+            s = 0;
+            label3.Text = "Score: " + game.score.ToString();
+            label4.Text = "Level: " + game.score / 1000;
+            txtResult.Text = string.Format("{0}:{1}:{2}", h.ToString().PadLeft(2, '0'), m.ToString().PadLeft(2, '0'), s.ToString().PadLeft(2, '0'));
+            timer.Start();
+            t.Start();
+        }
+
+        private void Drop()
+        {
+            while (true) {
+                if (!game.CanMove(0, 1))
+                {
+                    break;
+                }
+            }
         }
     }
 }

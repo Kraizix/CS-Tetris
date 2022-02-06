@@ -12,16 +12,16 @@
         public int height = 20;
         public bool ended = false;
         public int score = 0;
-        private int[] scores = { 100, 200, 500, 800 };
+        private readonly int[] scores = { 100, 200, 500, 800 };
         public Game()
         {
             grid = new int[width, height];
-            currentShape = getNewShape();
+            currentShape = GetNewShape();
             System.Threading.Thread.Sleep(100);
-            nextShape = getNewShape();
+            nextShape = GetNewShape();
         }
 
-        public Shape getNewShape()
+        public Shape GetNewShape()
         {
             Shape shape = Shapes.GetRandomShape();
             currentX = 4;
@@ -30,7 +30,7 @@
             return shape;
         }
 
-        public bool canMove(int posX, int posY)
+        public bool CanMove(int posX, int posY)
         {
             int newX = posX + currentX;
             int newY = posY + currentY;
@@ -54,7 +54,7 @@
             return true;
         }
 
-        public bool updateArray()
+        public bool UpdateArray()
         {
             for (int i = 0; i < currentShape.Width; i++)
             {
@@ -72,7 +72,7 @@
             }
             return false;
         }
-        public void rotate()
+        public void Rotate()
         {
             backup = currentShape.Piece;
             currentShape.Piece = new int[currentShape.Width, currentShape.Height];
@@ -87,7 +87,7 @@
             currentShape.Width = currentShape.Height;
             currentShape.Height = temp;
         }
-        public void rollback()
+        public void Rollback()
         {
             currentShape.Piece = backup;
             int temp = currentShape.Width;
@@ -95,7 +95,7 @@
             currentShape.Height = temp;
         }
 
-        public bool clearRows()
+        public bool ClearRows()
         {
             int nb_lines = 0;
             for (int i = 1; i < height; i++)

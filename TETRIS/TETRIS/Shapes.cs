@@ -22,7 +22,6 @@
             {
                 Random random = new Random();
                 Shape shape = shapesArray[random.Next(shapesArray.Length)];
-
                 return shape;
             }
         }

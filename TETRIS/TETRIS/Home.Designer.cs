@@ -91,10 +91,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Minecraft", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(94, 221);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(144, 11);
+            this.label1.Size = new System.Drawing.Size(129, 13);
             this.label1.TabIndex = 4;
             this.label1.Text = "By ProgrammaStudios";
             // 
@@ -119,6 +119,7 @@
             this.Text = "Tetrics";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Home_Load);
+            this.Shown += new System.EventHandler(this.Home_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -7,6 +7,7 @@ namespace TETRIS
 {
     public partial class Home : Form
     {
+        private Play play;
         private static WMPLib.WindowsMediaPlayer axMusicPlayer = new WMPLib.WindowsMediaPlayer();
         public Home()
         {
@@ -36,9 +37,18 @@ namespace TETRIS
 
         private void btnPlay_Click(object sender, EventArgs e)
         {
-            Play play = new Play();
-            play.ShowDialog();
+            play = new Play(this);
             Hide();
+            play.ShowDialog();
+            try
+            {
+                Show();
+            } catch
+            {
+                return;
+            }
+            
+            
         }
 
         public static WindowsMediaPlayer GetMediaPlayer()
@@ -55,6 +65,14 @@ namespace TETRIS
         {
             pictureBox1.ImageLocation = "https://i.imgur.com/DHAJmLB.png";
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+        }
+
+        private void Home_Shown(object sender, EventArgs e)
+        {
+            if(play != null)
+            {
+                play.Close();
+            }
         }
     }
 }

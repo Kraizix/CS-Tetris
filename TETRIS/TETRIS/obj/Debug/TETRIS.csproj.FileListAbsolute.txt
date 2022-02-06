@@ -52,3 +52,4 @@ C:\Users\kevin\source\repos\CS-Tetris\TETRIS\TETRIS\obj\Debug\TETRIS.exe
 C:\Users\kevin\source\repos\CS-Tetris\TETRIS\TETRIS\obj\Debug\TETRIS.pdb
 D:\Developement\tetrics\CS-Tetris\TETRIS\TETRIS\obj\Debug\TETRIS.Home.resources
 D:\Developement\tetrics\CS-Tetris\TETRIS\TETRIS\obj\Debug\TETRIS.Play.resources
+C:\Users\granger\source\repos\CS-Tetris\TETRIS\TETRIS\obj\Debug\TETRIS.End.resources
