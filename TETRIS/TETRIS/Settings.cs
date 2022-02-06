@@ -51,7 +51,13 @@ namespace TETRIS
             {
                 randomMode = true;
                 textBox1.Text = "Game randomized";
-            } 
+            }
+            else if (textBox1.Text == "Reset")
+            {
+                gameSpeed = 0;
+                randomMode = false;
+                textBox1.Text = "Jeu réinitialisé...";
+            }
             else
             {
                 textBox1.Text = "Aie...";

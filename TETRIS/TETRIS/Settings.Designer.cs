@@ -41,6 +41,7 @@
             this.submitPass = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.volumeBar)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -157,6 +158,7 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.submitPass);
             this.groupBox2.Controls.Add(this.textBox1);
             this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -195,6 +197,15 @@
             this.button1.Text = "Close";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(9, 169);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(244, 18);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Tapez Reset pour enlever tout les effets";
             // 
             // Options
             // 
@@ -237,5 +248,6 @@
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label4;
     }
 }
