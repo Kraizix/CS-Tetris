@@ -37,7 +37,6 @@ namespace TETRIS
             axMusicPlayer.URL = Home.AssetsPath + @"\theme_menu.wav";
             axMusicPlayer.settings.setMode("loop", true);
             axMusicPlayer.controls.play();
-            this.Close();
             playForm.Close();
             Close();
         }

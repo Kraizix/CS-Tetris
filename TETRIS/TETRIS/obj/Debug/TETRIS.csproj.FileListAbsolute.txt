@@ -56,3 +56,4 @@ C:\Users\granger\source\repos\CS-Tetris\TETRIS\TETRIS\obj\Debug\TETRIS.End.resou
 C:\Users\kevin\source\repos\CS-Tetris\TETRIS\TETRIS\obj\Debug\TETRIS.End.resources
 D:\Developement\tetrics\CS-Tetris\TETRIS\TETRIS\obj\Debug\TETRIS.End.resources
 D:\Developement\tetrics\CS-Tetris\TETRIS\TETRIS\obj\Debug\TETRIS.Help.resources
+C:\Users\kevin\source\repos\CS-Tetris\TETRIS\TETRIS\obj\Debug\TETRIS.Help.resources

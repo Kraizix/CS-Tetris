@@ -10,7 +10,7 @@ namespace TETRIS
     {
         WMPLib.WindowsMediaPlayer gameMusic = Home.GetMediaPlayer();
         private Home mainMenu;
-        private int h, m, s;
+        private int hours, minutes, seconds;
         private int speed = Options.GetSpeed();
         private Bitmap canvasBitmap;
         private Graphics canvasGraphics;
@@ -21,7 +21,7 @@ namespace TETRIS
         private Bitmap nextBitmap;
         private Graphics nextGraphics;
         private System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
-        private System.Timers.Timer t;
+        private System.Timers.Timer time;
         private readonly string[] colors = { "#ffffff","#ffff00", "#00ffff", "#800080", "#ff7f00", "#0000ff", "#ff0000", "#00ff00" };
         private readonly bool clearMode = Options.getMode();
         private readonly int clearScore = Options.getClearScore();
@@ -49,10 +49,10 @@ namespace TETRIS
 
         private void Play_Load_1(object sender, EventArgs e)
         {
-            t = new System.Timers.Timer();
-            t.Interval = 1000;
-            t.Elapsed += OnTimeEvent;
-            t.Start();
+            time = new System.Timers.Timer();
+            time.Interval = 1000;
+            time.Elapsed += OnTimeEvent;
+            time.Start();
             gameMusic.controls.stop();
             string path = Directory.GetCurrentDirectory();
             Console.WriteLine(path);
@@ -66,18 +66,18 @@ namespace TETRIS
             {
                 Invoke(new Action(() =>
                 {
-                    s += 1;
-                    if (s == 60)
+                    seconds += 1;
+                    if (seconds == 60)
                     {
-                        s = 0;
-                        m += 1;
+                        seconds = 0;
+                        minutes += 1;
                     }
-                    if (m == 60)
+                    if (minutes == 60)
                     {
-                        m = 0;
-                        h += 1;
+                        minutes = 0;
+                        hours += 1;
                     }
-                    txtResult.Text = string.Format("{0}:{1}:{2}", h.ToString().PadLeft(2, '0'), m.ToString().PadLeft(2, '0'), s.ToString().PadLeft(2, '0'));
+                    txtResult.Text = string.Format("{0}:{1}:{2}", hours.ToString().PadLeft(2, '0'), minutes.ToString().PadLeft(2, '0'), seconds.ToString().PadLeft(2, '0'));
                 }));
             } catch
             {
@@ -88,7 +88,7 @@ namespace TETRIS
         {
             try
             {
-                t.Stop();
+                time.Stop();
                 timer.Stop();
                 Hide();
                 mainMenu.Show();
@@ -140,7 +140,7 @@ namespace TETRIS
                 if (e.KeyCode== Keys.Escape){
                     pause = false;
                     timer.Start();
-                    t.Start();
+                    time.Start();
                     label5.Text = "Playing";
                 }
                 return;
@@ -169,7 +169,7 @@ namespace TETRIS
                     break;
                 case Keys.Escape:
                     timer.Stop();
-                    t.Stop();
+                    time.Stop();
                     pause = true;
                     label5.Text = "Paused";
                     break;
@@ -227,7 +227,7 @@ namespace TETRIS
                 if (ended)
                 {
                     timer.Stop();
-                    t.Stop();
+                    time.Stop();
                     End end = new End(this);
                     end.ShowDialog();
                     return;
@@ -284,16 +284,15 @@ namespace TETRIS
             LoadCanvas();
             UpdateNextShape();
             game.score = 0;
-            timer.Tick += Timer_Tick;
             timer.Interval = 500 - speed * 4;
-            h = 0;
-            m = 0;
-            s = 0;
+            hours = 0;
+            minutes = 0;
+            seconds = 0;
             label3.Text = "Score: " + game.score.ToString();
             label4.Text = "Level: " + game.score / 1000;
-            txtResult.Text = string.Format("{0}:{1}:{2}", h.ToString().PadLeft(2, '0'), m.ToString().PadLeft(2, '0'), s.ToString().PadLeft(2, '0'));
+            txtResult.Text = string.Format("{0}:{1}:{2}", hours.ToString().PadLeft(2, '0'), minutes.ToString().PadLeft(2, '0'), seconds.ToString().PadLeft(2, '0'));
             timer.Start();
-            t.Start();
+            time.Start();
         }
 
         private void Drop()
