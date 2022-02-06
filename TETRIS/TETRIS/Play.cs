@@ -26,6 +26,7 @@ namespace TETRIS
         private readonly bool clearMode = Options.getMode();
         private readonly int clearScore = Options.getClearScore();
         private int lastClear = 0;
+        private bool pause = false;
 
         private void LoadCanvas()
         {
@@ -134,6 +135,15 @@ namespace TETRIS
 
         private void Play_KeyDown(object sender, KeyEventArgs e)
         {
+            if (pause)
+            {
+                if (e.KeyCode== Keys.Escape){
+                    pause = false;
+                    timer.Start();
+                    t.Start();
+                }
+                return;
+            }
             int posX = 0;
             int posY = 0;
             switch (e.KeyCode)
@@ -152,6 +162,11 @@ namespace TETRIS
                     break;
                 case Keys.D:
                     Drop();
+                    break;
+                case Keys.Escape:
+                    timer.Stop();
+                    t.Stop();
+                    pause = true;
                     break;
                 default:
                     return;
